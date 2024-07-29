@@ -38,9 +38,9 @@
                 name="name" required value="{{ $category->name }}" />
             <br /><br />
             <label for="description"><b>Description</b> [Facultatif]</label>
-            <textarea name="description" id="description" rows="3" placeholder="Saisir la description ...">{{ $category->description }}</textarea><br />
+            <textarea name="description" id="description" rows="3" placeholder="Saisir la description ...">
+            <button type="submit" class="button w-100 primary">Soumettre</button>{{ $category->description }}</textarea><br />
 
-            <button type="submit" class="button w-100 primary">Soumettre</button>
         </form>
 
     </div>
