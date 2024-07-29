@@ -58,12 +58,6 @@ h1 {
 .btn-container {
     padding: 1rem;
 }
-.btn-container:hover{
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-    
-}
-
 button {
     background: #0d6dad;
     width: 125px;
@@ -98,5 +92,5 @@ button {
 }
 
 #btn2:hover {
-    background: #250ea5;
+    background: #3594d2;
 }
