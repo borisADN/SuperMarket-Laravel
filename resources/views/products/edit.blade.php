@@ -6,7 +6,7 @@
     <div class="wrap-content">
         @include('includes.appbar')
 
-        <form action="{{ route('categories.update', $category->id) }}" class="category-form" method="POST">
+        <form action="{{ route('products.update', $product->id) }}" class="category-form" method="POST">
             @csrf
             
             @method("PATCH")
@@ -33,15 +33,61 @@
                 </ul>
             @endif
 
-            <label for="name"><b>Nom de la catégorie</b></label>
-            <input type="text" placeholder="Nom de la catégorie ..." id="name" minlength="3" maxlength="128"
-                name="name" required value="{{ $category->name }}" />
-            <br /><br />
-            <label for="description"><b>Description</b> [Facultatif]</label>
-            <textarea name="description" id="description" rows="3" placeholder="Saisir la description ...">{{ $category->description }}</textarea><br />
+            <label for="category"><b>Catégorie du produit</b></label>
+            <select name="category_id" id="category" required>
+                <option value="">Sélectionner une catégorie</option>
+                @forelse ($categories as $category)
+                    <option value="{{ $categories->id }}">{{ $categories->name }}</option>
+                @empty
+                    <option value="">Pas de catégorie !</option>
+                @endforelse
+            </select>
+            <br />
+
+            <label for="name"><b>Nom du produit</b></label>
+            <input type="text" placeholder="Nom du produit ..." id="name" minlength="3" maxlength="128"
+                name="name" required value="{{ $product->name }}" />
+            <br />
+
+            <table width="100%">
+                <tr>
+                    <td>
+                        <label for="price"><b>Prix en F CFA</b></label>
+                        <input type="text" min="0" value="{{ $product->price }}" max="1000000" placeholder="Prix ..."
+                            id="price" name="price" required />
+                    </td>
+                    <td>
+                        <label for="quantity"><b>Quantité</b></label>
+                        <input type="number" min="1" value="{{ $product->quantity }}" max="1000000" placeholder="quantité ..."
+                            id="quantity" name="quantity" required />
+                    </td>
+                </tr>
+            </table><br />
+
+            <label for="short_description"><b>Courte description</b> [Facultatif]</label>
+            <textarea name="short_description" id="short_description" rows="3"
+                placeholder="Saisir une courte description ...">{{ $product->description }}</textarea><br /><br />
+
+            <label for="summernote"><b>Longue description</b> [Facultatif]</label><br /><br />
+            <textarea name="long_description" id="summernote" rows="8" placeholder="Saisir une longue description ...">{{ $product->description }}</textarea><br />
 
             <button type="submit" class="button w-100 primary">Soumettre</button>
-        </form>
+        </form><br /><br /><br /><br />
 
     </div>
 @endsection
+
+@section('js')
+    <script src="{{ URL::asset('assets/summernote/summernote.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                placeholder: "Saisir une lingue description ...",
+                height: 150
+            });
+        });
+    </script>
+@endsection
+
+
+

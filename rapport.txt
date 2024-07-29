@@ -1,0 +1,81 @@
+PROBLEMES RENCONTRES
+
+ {#include(C:\Users\ADN5_CG1\Desktop\BRIEF\supe  
+  r-m\vendor\composer/../consoletvs/charts/src  
+  /ChartsServiceProvider.php): Failed to open   
+  stream: No such file or directory
+  
+  Resolution 
+
+  composer remove consoletvs/charts
+  composer require consoletvs/charts
+  
+  }
+
+  {
+Anomalies au niveau du graphique 
+
+ au niveau de app/Repositories/ProductRepository.php
+ public function chartByCategory()
+    // {
+
+    //     $data = Product::select('name')
+    //         ->selectRaw('COUNT(*) as count')
+    //         ->groupBy('category_id')
+    //         ->get();
+
+    //     $json_data = json_decode($data, true);
+
+    //     $names = [];
+    //     $count = [];
+
+    //     $i = 0;
+
+    //     foreach ($json_data as $item) {
+    //         $i++;
+    //         $names[] = $item['name'];
+    //         $count[] = $item['count'];
+    //     }
+
+    //     $chart = new ProductChart;
+    //     $chart->labels($names);
+    //     $chart->dataset("Ordinateurs", "pie", $count)->options([
+    //         'backgroundColor' => ['#046e24', "#dd4c09", "#0b7ad4", "#b20bd4", "#d1163e", "#178897", "#587512"],
+    //     ]);
+
+    //     return $chart;
+    // }
+
+resolution 
+
+ public function chartByCategory()
+    {
+
+        $data = Product::select('category_id')
+            ->selectRaw('COUNT(*) as count')
+            ->groupBy('category_id')
+            ->get();
+
+        $json_data = json_decode($data, true);
+
+        $names = [];
+        $count = [];
+
+        $i = 0;
+
+        foreach ($json_data as $item) {
+            $i++;
+            $count[] = $item['count'];
+            $names[] = Category::find($item['category_id'])->name;
+        }
+
+        $chart = new ProductChart;
+        $chart->labels($names);
+        $chart->dataset("Ordinateurs", "pie", $count)->options([
+            'backgroundColor' => ['#046e24', "#dd4c09", "#0b7ad4", "#b20bd4", "#d1163e", "#178897", "#587512"],
+        ]);
+
+        return $chart;
+    }
+
+  }
