@@ -58,7 +58,7 @@ class ProductRepository implements ProductInterface
 
         $chart = new ProductChart;
         $chart->labels($names);
-        $chart->dataset("Ordinateurs", "pie", $count)->options([
+        $chart->dataset("Ordinateurs", "bar", $count)->options([
             'backgroundColor' => ['#046e24', "#dd4c09", "#0b7ad4", "#b20bd4", "#d1163e", "#178897", "#587512"],
         ]);
 

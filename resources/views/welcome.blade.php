@@ -13,6 +13,29 @@
     @include('includes.sidebar')
 
     <div class="wrap-content">
+        <script>
+            $(document).ready(function() {
+                @if (session('message'))
+                    var message = "{{ session('message') }}";
+                    var type = "{{ session('alert-type', 'info') }}";
+    
+                    switch (type) {
+                        case 'success':
+                            toastr.success(message);
+                            break;
+                        case 'error':
+                            toastr.error(message);
+                            break;
+                        case 'warning':
+                            toastr.warning(message);
+                            break;
+                        case 'info':
+                            toastr.info(message);
+                            break;
+                    }
+                @endif
+            });
+        </script>
 
         @include('includes.appbar')
 

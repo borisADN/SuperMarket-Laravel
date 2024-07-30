@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chart.js Tutorial</title>
-    <link rel="stylesheet" href="{{asset('assets/chart1.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('assets/chart1.css')}}"> --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   </head>
   <style>

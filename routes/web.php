@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 
-route::get('/', [AuthController::class, 'index'])->name('login');
+Route::get('/', [AuthController::class, 'index'])->name('login');
+Route::post('/' , [AuthController::class, 'store'])->name('store');
+Route::post('/login' , [AuthController::class, 'handle_login'])->name('handle_login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 // route::post('/', [AuthController::class, 'login_action'])->name('login_action');

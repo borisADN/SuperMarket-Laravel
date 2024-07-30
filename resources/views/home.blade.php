@@ -3,6 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 	<title>Document</title>
 </head>
 <body>
@@ -198,21 +201,54 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(16,16,212,1) 35%, rgb
 <body>
 	<div class="container" id="main">
 		<div class="sign-up">
-			<form action="#">
+			<form action="{{ route('store') }}" method="POST">
+				@csrf
+				@method('POST')
 				<h1>Inscription</h1>
-
 			
-				<input type="text" name="txt" placeholder="Name" required="">
+		        <input type="text" name="name" placeholder="Name" required="">
 				<input type="email" name="email" placeholder="Email" required="">
-				<input type="password" name="pswd" placeholder="Password" required="">
-				<button>S'inscrire</button>
+				<input type="password" name="password" placeholder="Password" required="">
+				{{-- <input type="submit" value="S'inscrire"> --}}
+				<button type="submit">S'inscrire</button>
 			</form>
 		</div>
 		<div class="sign-in">
-			<form action="#">
+			<form action="{{ route('handle_login')}}" method="POST">
+				@csrf
+				@method('POST')
 				<h1>Connexion</h1>
+				<script>
+					$(document).ready(function() {
+						@if (session('message'))
+							var message = "{{ session('message') }}";
+							var type = "{{ session('alert-type', 'info') }}";
+			
+							switch (type) {
+								case 'success':
+									toastr.success(message);
+									break;
+								case 'error':
+									toastr.error(message);
+									break;
+								case 'warning':
+									toastr.warning(message);
+									break;
+								case 'info':
+									toastr.info(message);
+									break;
+							}
+						@endif
+					});
+				</script>
+{{-- 	
+				@if ($message = Session::get("error"))
+					<script>
+						toastr.warning('Are you the 6 fingered man?')
+					</script>
+				@endif --}}
 				<input type="email" name="email" placeholder="Email" required="">
-				<input type="password" name="pswd" placeholder="Mot De Passe" required="">
+				<input type="password" name="password" placeholder="Mot De Passe" required="">
 
 				<button>Se Connecter</button>
 			</form>
@@ -220,6 +256,8 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(16,16,212,1) 35%, rgb
 		<div class="overlay-container">
 			<div class="overlay">
 				<div class="overlay-left">
+
+					{{-- Section  inscription --}}
 					<h1>Bonjour!</h1>
 					<p>Vous vous etes deja inscrit? Connectez vous alors pour continuer</p>
 					<button id="signIn">Se Connecter</button>
@@ -233,6 +271,11 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(16,16,212,1) 35%, rgb
 			</div>
 		</div>
 	</div>
+	
+					{{-- <script>
+						toastr.warning('Are you the 6 fingered man?')
+					</script> --}}
+					
 	<script type="text/javascript">
 		const signUpButton = document.getElementById('signUp');
 		const signInButton = document.getElementById('signIn');
