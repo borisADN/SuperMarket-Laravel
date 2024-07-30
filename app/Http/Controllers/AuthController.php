@@ -54,6 +54,7 @@ class AuthController extends Controller
         // Récupération des informations de connexion
     $credentials = $request->only('email', 'password');
 
+
     // Tentative de connexion
     if (Auth::attempt($credentials)) {
         // Redirection vers la page d'accueil ou la page demandée précédemment
