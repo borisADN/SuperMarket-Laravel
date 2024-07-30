@@ -28,4 +28,5 @@ class MainController extends Controller
             "product_chart_by_category" => $this->productInterface->chartByCategory()
         ]);
     }
+   
 }

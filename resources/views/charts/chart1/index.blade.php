@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart.js Tutorial</title>
+    <link rel="stylesheet" href="{{asset('assets/chart1.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  </head>
+  <style>
+    :root {
+    --background: #1A1C1E;
+    --background-widget: #1E2023;
+    --primary: #F6C356;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--background);
+    height: 100vh;
+}
+
+.widget {
+    border-radius: 32px;
+    background-color: var(--background-widget);
+    padding: 16px;
+    max-width: 600px;
+    width: 100%;
+    height: 100vh;
+    min-width: 300px;
+}
+
+.widget canvas {
+    min-height: 280px;
+}
+  </style>
+  <body>
+    <div class="widget">
+        <canvas id="revenues"></canvas>
+    </div>
+    <script >
+      const ctx = document.getElementById("revenues");
+
+Chart.defaults.color = "#FFF";
+Chart.defaults.font.family = "Open Sans";
+
+new Chart(ctx, {
+  type: "bar",
+  data: {
+    labels: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
+    datasets: [
+      {
+        label: "Revenue (million [$])",
+        data: [
+          5.2, 7.8, 12.3, 11.2, 11.5, 28.8, 35.5, 40, 42.5, 45.5, 50.5, 60,
+        ],
+        backgroundColor: "#0d6dad",
+        borderRadius: 6,
+        borderSkipped: false,
+      },
+    ],
+  },
+  // continuation
+
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      title: {
+        display: true,
+        text: "Your Company Revenue In 2023",
+        padding: {
+          bottom: 16,
+        },
+        font: {
+          size: 16,
+          weight: "normal",
+        },
+      },
+      tooltip: {
+        backgroundColor: "#27292D",
+      },
+    },
+    scales: {
+      x: {
+        border: {
+          dash: [2, 4],
+        },
+        grid: {
+          color: "#27292D",
+        },
+        title: {
+          text: "2023",
+        },
+      },
+      y: {
+        grid: {
+          color: "#27292D",
+        },
+        border: {
+          dash: [2, 4],
+        },
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: "Revenue (million [$])",
+        },
+      },
+    },
+  },
+});
+    </script>
+  </body>
+</html>

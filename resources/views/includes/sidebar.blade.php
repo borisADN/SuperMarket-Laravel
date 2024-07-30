@@ -70,14 +70,14 @@
 
     <ul>
         <li>
-            <a href="#">
+            <a href="{{ route('chart1') }}">
                 <div @class([isset($page) && $page === "#" ? "active" : ""])>
                     graphique1
                 </div>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('chart2') }}">
                 <div @class([isset($page) && $page === "#" ? "active" : ""])>
                     graphique2
                 </div>

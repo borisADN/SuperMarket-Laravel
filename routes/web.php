@@ -1,12 +1,16 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
+
 route::get('/', [AuthController::class, 'index'])->name('login');
+
+
 // route::post('/', [AuthController::class, 'login_action'])->name('login_action');
 
 
@@ -21,3 +25,6 @@ Route::get('/home', [MainController::class, 'home'])->name('home');
 
 Route::resource('/categories', CategoryController::class);
 Route::resource('/products', ProductController::class);
+Route::get('/charts1', [ChartController::class, 'chart1'])->name('chart1');
+Route::get('/charts2', [ChartController::class, 'chart2'])->name('chart2');
+
