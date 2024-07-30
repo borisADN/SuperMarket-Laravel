@@ -57,5 +57,46 @@
             </a>
         </li>
     </ul>
+    {{-- boris travaille ici --}}
+    <ul>
+        <li>
+            <small>
+                <i class="fa-solid fa-chart-simple"></i>
+                &nbsp;
+                <b>Affichage Des Graphiques</b>
+            </small>
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            <a href="#">
+                <div @class([isset($page) && $page === "#" ? "active" : ""])>
+                    graphique1
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div @class([isset($page) && $page === "#" ? "active" : ""])>
+                    graphique2
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div @class([isset($page) && $page === "#" ? "active" : ""])>
+                    graphique3
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div @class([isset($page) && $page === "#" ? "active" : ""])>
+                    graphique4
+                </div>
+            </a>
+        </li>
+    </ul>
     
 </div>
