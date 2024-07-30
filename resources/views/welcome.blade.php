@@ -80,7 +80,7 @@
                             <small>Ventes</small>
                         </td>
                         <td class="text-right">
-                            <a href="#!" class="button error">
+                            <a href="{{ route('sales.index') }}" class="button error">
                                 <i class="fas fa-arrow-right-long"></i>
                             </a>
                         </td>
