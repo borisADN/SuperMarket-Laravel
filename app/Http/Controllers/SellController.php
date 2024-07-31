@@ -102,3 +102,19 @@ class SellController extends Controller
         return redirect()->route('sells.index')->with('success', 'Vente supprimée avec succès!');
     }
 }
+use App\Models\Sell;
+
+class SellController extends Controller
+{
+    public function index()
+    {
+        $sells = Sell::all();
+        return view('sells.index', compact('sells'));
+    }
+
+    public function show($id)
+    {
+        $sell = Sell::findOrFail($id);
+        return view('sells.show', compact('sell'));
+    }
+}

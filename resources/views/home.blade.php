@@ -249,6 +249,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(16,16,212,1) 35%, rgb
 				@endif --}}
 				<input type="email" name="email" placeholder="Email" required="">
 				<input type="password" name="password" placeholder="Mot De Passe" required="">
+				<input type="checkbox" name="remember"> Se souvenir de moi
 
 				<button>Se Connecter</button>
 			</form>

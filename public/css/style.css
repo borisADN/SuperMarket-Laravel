@@ -259,7 +259,9 @@ textarea {
 
 .text-right {
     text-align: right;
+    width: 10px;
 }
+
 
 .w-100 {
     width: 100%;
