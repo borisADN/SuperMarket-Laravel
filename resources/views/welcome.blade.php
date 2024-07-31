@@ -56,8 +56,10 @@
                             <span class="h1">{{ $products }}</span>
                             <small>Ventes</small>
                         </td>
-                        <td class="text-right">
-                            <a href=" {{ route('sells.index') }}" class="button error">
+                        <td class="text-right"
+                            <a href=" {{ route('sells.index') }}" class="button error"
+                            <a href="{{ route('sales.index') }}" class="button error">
+
                                 <i class="fas fa-arrow-right-long"></i>
                             </a>
                         </td>
