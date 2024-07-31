@@ -7,6 +7,9 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SellController;
+
+
+
 use App\Models\Sell;
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
@@ -15,7 +18,6 @@ Route::post('/login' , [AuthController::class, 'handle_login'])->name('handle_lo
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
-<<<<<<< HEAD
 // route::post('/', [AuthController::class, 'login_action'])->name('login_action');
 
 
@@ -27,11 +29,10 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
 Route::get('/', [MainController::class, 'home'])->name('home');
-=======
 Route::middleware('auth')->group(function () {
     Route::get('/home', [MainController::class, 'home'])->name('home');
 });
->>>>>>> e653b618eefe5fe3279059f17cb397a422532337
+
 
 Route::resource('/categories', CategoryController::class);
 Route::resource('/products', ProductController::class);
@@ -40,6 +41,19 @@ Route::get('/charts1', [ChartController::class, 'chart1'])->name('chart1');
 Route::get('/charts2', [ChartController::class, 'chart2'])->name('chart2');
 
 
+
+Route::get('/', [MainController::class, 'home'])->name('home');
+
+Route::resource('/categories', CategoryController::class);
+Route::resource('/products', ProductController::class);
+
+Route::resource('/sells', SellController::class);
+
+Route::get('sells/create', [SellController::class, 'create'])->name('sells.create');
+Route::post('sells', [SellController::class, 'store'])->name('sells.store');
+
+Route::get('sells/{sell}/delete', [SellController::class, 'delete'])->name('sells.delete');
+Route::delete('sells/{sell}', [SellController::class, 'destroy'])->name('sells.destroy');
 Route::get('sells', [SellController::class, 'index'])->name('sells.index');
 Route::get('sells/{id}', [SellController::class, 'show'])->name('sells.show');
 
