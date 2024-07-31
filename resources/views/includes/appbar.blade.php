@@ -15,8 +15,8 @@
                     </div>
             
                     <ul>
-                        <li><a href="#">Modifier le Profil</a></li>
-                        <li><a href="#">Deconnexion</a></li>
+                        <li><a href="{{ route('edit-profile') }}">Modifier le Profil</a></li>
+                        <li><a href="{{ route('logout') }}">Deconnexion</a></li>
                     </ul>
                 </li>
             </td>

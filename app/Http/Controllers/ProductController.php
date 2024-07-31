@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classes\ResponseClass;
 use App\Http\Requests\Products\CreateProductRequest;
+use App\Http\Requests\Products\UpdateProductRequest;
 use App\Interfaces\CategoryInterface;
 use App\Interfaces\ProductInterface;
 use Illuminate\Http\Request;

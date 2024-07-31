@@ -15,7 +15,14 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (Auth::check()) {
+            return redirect('home');
+        }else {
+            return view('home');
+        }
+
+
+      
     
     }
 
@@ -54,7 +61,6 @@ class AuthController extends Controller
         // Récupération des informations de connexion
     $credentials = $request->only('email', 'password');
 
-
     // Tentative de connexion
     if (Auth::attempt($credentials)) {
         // Redirection vers la page d'accueil ou la page demandée précédemment
@@ -92,9 +98,29 @@ class AuthController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updateProfile(Request $request, string $id)
     {
-        //
+      return $request;
+        //afficher le profile
+        // return $user;
+        // return view('auth.edit', ['user' => $user]);
+
+
+
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect()->back()->with('message', 'Compte modifié avec succes')->with('alert-type', 'success');
+
+        
+    }
+    //edit profile
+    public function editProfile() {
+        $user = Auth::user();
+        return view('edit_profile', ['user' => $user]);
     }
 
     /**
@@ -103,5 +129,11 @@ class AuthController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    //logout
+    public function logout() {
+        Auth::logout();
+        // Redirection vers la page de connexion
+    return redirect()->route('login')->with('message', 'Vous avez été déconnecté avec succès!')->with('alert-type','success');
     }
 }
