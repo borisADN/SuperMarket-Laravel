@@ -6,6 +6,8 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SellController;
+
 
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
@@ -30,4 +32,19 @@ Route::resource('/categories', CategoryController::class);
 Route::resource('/products', ProductController::class);
 Route::get('/charts1', [ChartController::class, 'chart1'])->name('chart1');
 Route::get('/charts2', [ChartController::class, 'chart2'])->name('chart2');
+
+
+Route::get('/', [MainController::class, 'home'])->name('home');
+
+Route::resource('/categories', CategoryController::class);
+Route::resource('/products', ProductController::class);
+
+Route::resource('/sells', SellController::class);
+
+Route::get('sells/create', [SellController::class, 'create'])->name('sells.create');
+Route::post('sells', [SellController::class, 'store'])->name('sells.store');
+
+Route::get('sells/{sell}/delete', [SellController::class, 'delete'])->name('sells.delete');
+Route::delete('sells/{sell}', [SellController::class, 'destroy'])->name('sells.destroy');
+
 

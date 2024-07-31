@@ -13,29 +13,6 @@
     @include('includes.sidebar')
 
     <div class="wrap-content">
-        <script>
-            $(document).ready(function() {
-                @if (session('message'))
-                    var message = "{{ session('message') }}";
-                    var type = "{{ session('alert-type', 'info') }}";
-    
-                    switch (type) {
-                        case 'success':
-                            toastr.success(message);
-                            break;
-                        case 'error':
-                            toastr.error(message);
-                            break;
-                        case 'warning':
-                            toastr.warning(message);
-                            break;
-                        case 'info':
-                            toastr.info(message);
-                            break;
-                    }
-                @endif
-            });
-        </script>
 
         @include('includes.appbar')
 
@@ -65,7 +42,7 @@
                             <small>Produits</small>
                         </td>
                         <td class="text-right">
-                            <a href="{{ route('categories.index') }}" class="button success">
+                            <a href="{{ route('products.index') }}" class="button success">
                                 <i class="fas fa-arrow-right-long"></i>
                             </a>
                         </td>
@@ -76,11 +53,11 @@
                 <table width="100%">
                     <tr>
                         <td>
-                            <span class="h1">{{ 0 }}</span>
+                            <span class="h1">{{ $products }}</span>
                             <small>Ventes</small>
                         </td>
                         <td class="text-right">
-                            <a href="#!" class="button error">
+                            <a href=" {{ route('sells.index') }}" class="button error">
                                 <i class="fas fa-arrow-right-long"></i>
                             </a>
                         </td>
