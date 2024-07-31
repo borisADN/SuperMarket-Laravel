@@ -102,7 +102,6 @@ class SellController extends Controller
         return redirect()->route('sells.index')->with('success', 'Vente supprimée avec succès!');
     }
 }
-use App\Models\Sell;
 
 class SellController extends Controller
 {
