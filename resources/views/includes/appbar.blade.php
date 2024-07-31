@@ -6,11 +6,22 @@
                     <b>Home</b>
                 </a>
             </td>
+    
             <td class="text-right">
-                <a href="">
-                    <b>Paramètres</b>
-                </a>
+                <li class="nav__profile">
+                    <div class="avatar">
+                        <img src="{{ URL::asset('assets/images/brooo.jpg') }}" alt="">
+                        {{-- <img src="{{ URL::asset('assets/images/picture.jpg') }}" alt="">" > --}}
+                    </div>
+            
+                    <ul>
+                        <li><a href="#">Modifier le Profil</a></li>
+                        <li><a href="#">Deconnexion</a></li>
+                    </ul>
+                </li>
             </td>
+            {{-- <img src="{{ URL::asset('assets/images/logo.jpg') }}" alt=""> --}}
+
         </tr>
     </table>
 </header>
