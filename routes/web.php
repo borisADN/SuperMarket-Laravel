@@ -62,26 +62,9 @@ Route::get('/', [MainController::class, 'home'])->name('home');
 Route::resource('/categories', CategoryController::class);
 Route::resource('/products', ProductController::class);
 
-Route::resource('/sells', SellController::class);
-
-Route::get('sells/create', [SellController::class, 'create'])->name('sells.create');
-Route::post('sells', [SellController::class, 'store'])->name('sells.store');
-
-Route::get('sells/{sell}/delete', [SellController::class, 'delete'])->name('sells.delete');
-Route::delete('sells/{sell}', [SellController::class, 'destroy'])->name('sells.destroy');
-Route::get('sells', [SellController::class, 'index'])->name('sells.index');
-Route::get('sells/{id}', [SellController::class, 'show'])->name('sells.show');
 
 
 
-Route::get('checkout', [PaymentController::class, 'createCheckoutSession'])->name('checkout');
-Route::get('payment-success', [PaymentController::class, 'success'])->name('payment.success');
-Route::get('payment-cancel', [PaymentController::class, 'cancel'])->name('payment.cancel');
-Route::resource( 'sales', SaleController::class);
-
-
-Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
-Route::post('/payment', [PaymentController::class, 'processPayment'])->name('payment.process');
 
 
 

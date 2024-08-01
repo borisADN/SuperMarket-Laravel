@@ -1,4 +1,3 @@
-
 @extends('layout.base')
 
 @section('content')
@@ -27,10 +26,9 @@
             @endif
 
             <div class="border datatable-cover">
-                <table id="datatable" class="stripe">
+                <table id="datatable" class="stripe" border="1">
                     <thead>
                         <tr>
-                            {{-- <th>ID</th> --}}
                             <th>Nom du Produit</th>
                             <th>ID de la Catégorie</th>
                             <th>Quantité</th>
@@ -43,7 +41,6 @@
                     <tbody>
                         @forelse($sells as $sell)
                             <tr>
-                                {{-- <td>{{ $sell->id }}</td> --}}
                                 <td>{{ $sell->product_name }}</td>
                                 <td>{{ $sell->category_id }}</td>
                                 <td>{{ $sell->quantity }}</td>
@@ -53,8 +50,7 @@
                                         <i class="fa-solid fa-download"></i>
                                     </a>
                                     &nbsp;
-                                    <form class="d-inline" action="{{ route('sells.destroy', $sell->id) }}"
-                                        method="POST"
+                                    <form class="d-inline" action="{{ route('sells.destroy', $sell->id) }}" method="POST"
                                         onsubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer la vente {{ $sell->name }} ? Cette action sera irréversible !')">
                                         @csrf
                                         @method('DELETE')
@@ -66,7 +62,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center">Aucune vente trouvée</td>
+                                <td colspan="5" class="text-center">Aucune vente trouvée</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -74,52 +70,13 @@
             </div>
 
         </div>
+        <h1>VENTES</h1>
 
-
-
-        {{-- 
-    <table class="table table-bordered">
-        
-        <tbody>
-            @forelse($sells as $sell)
-                <tr>
-                    <td>{{ $sell->id }}</td>
-                    <td>{{ $sell->product_name }}</td>
-                    <td>{{ $sell->category_id }}</td>
-                    <td>{{ $sell->quantity }}</td>
-                    <td>{{ $sell->price }}</td>
-                    <td>
-                        <a href="{{ route('sells.edit', $sell->id) }}" class="btn btn-warning btn-sm">Éditer</a>
-                        <form action="{{ route('sells.destroy', $sell->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
-                        </form>
-                    </td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="6" class="text-center">Aucune vente trouvée</td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
-</div> --}}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Vente</title>
-</head>
-<body>
-    <h1>VENTES</h1>
-    
-    <ul>
-        @foreach ($sells as $sell)
-            <li>
-                <a href="{{ route('sells.show', $sell->id) }}">{{ $sell->name }}</a>
-                - ${{ $sell->price }}
-            </li>
-        @endforeach
-    </ul>
-</body>
-</html>
+        <ul>
+            @foreach ($sells as $sell)
+                <li>
+                    <a href="{{ route('sells.show', $sell->id) }}">{{ $sell->name }}</a>
+                    - ${{ $sell->price }}
+                </li>
+            @endforeach
+        </ul>
